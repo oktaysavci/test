@@ -14,7 +14,11 @@ MESSAGE_TEXT = input("Göndermek istediğin mesaj: ")
 options = webdriver.EdgeOptions()
 options.add_argument("start-maximized")  # Tarayıcıyı tam ekran aç
 
-driver = webdriver.Edge(EdgeChromiumDriverManager().install(), options=options)
+# Edge WebDriver yolunu al
+driver_path = EdgeChromiumDriverManager().install()
+
+# WebDriver'ı başlat
+driver = webdriver.Edge(executable_path=driver_path, options=options)
 
 # Instagram'a giriş yap
 driver.get("https://www.instagram.com/accounts/login/")
@@ -65,4 +69,3 @@ print("✅ Mesaj başarıyla gönderildi!")
 
 # Tarayıcıyı kapat
 driver.quit()
-
